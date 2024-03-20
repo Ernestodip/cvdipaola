@@ -302,7 +302,7 @@ h2 {
         width: 250px; 
     }
     .skills {
-        padding: 0 30px 30px 30px;
+        padding: 30px;
     }
     .skills-content {
         display: flex;
