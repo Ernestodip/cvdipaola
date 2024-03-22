@@ -59,6 +59,28 @@ img {
     color: #D9D9D9;
 }
 
+.navbar {text-decoration: none;
+    color: #F2F211;
+    position: relative;
+}
+
+.navbar:after{
+    content: "";
+    width: 0;
+    height: 2%;
+    background-color: #D9D9D9;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transition: all .5s;
+    will-change: width;
+}
+.navbar:hover:after{
+    width: 100%;
+    right: 0;
+}
+
+
 #menu {
     display: none;
 }
@@ -113,7 +135,15 @@ img {
     text-transform: uppercase;
     font-size: 15px;
     border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.btn-1:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px  #D9D9D9;
+}
+
+
 
 .about {
     padding: 0 0 100px 0;
@@ -136,10 +166,11 @@ img {
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 40px;
     text-transform: uppercase;
     color: #F2F211;
     margin-bottom: 20px;
+    text-decoration: underline;
 }
 
 .about-txt p {
@@ -171,7 +202,6 @@ h2 {
 
 .portfolio-txt {
     flex-basis: 50%;
-    text-align: left;
 }
 
 .portfolio-txt span {
