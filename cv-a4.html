@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="" data-pal="pal1">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CV — Ernesto Di Paola</title>
+
+<style>
+/* ================= PALETAS ================= */
+/* Pal1 (por defecto) */
+:root{
+  --c1:#212121; --c2:#8F0000; --c3:#8F0000; --c4:#8F0000; --c5:#7F7F7F;
+  --ink:#0D0D0D; --muted:#222; --paper:#ffffff; --app-bg:#f4f4f4;
+  --chip-bg: color-mix(in oklab,var(--c1) 14%, #fff 86%);
+  --chip-bd: color-mix(in oklab,var(--c1) 30%, transparent);
+  --card-bd: color-mix(in oklab,var(--c1) 22%, transparent);
+  --divider: color-mix(in oklab,var(--c1) 60%, transparent);
+  --header-ink: color-mix(in oklab,var(--c2) 82%, #333 18%);
+}
+/* Paleta 2 */
+html[data-pal="pal2"]{
+  --c1:#0E1E2E; --c2:#BF0A5E; --c3:#BF0A5E; --c4:#BF0A5E; --c5:#0D0D0D;
+  --chip-bg: color-mix(in oklab,var(--c1) 18%, #fff 82%);
+  --chip-bd: color-mix(in oklab,var(--c1) 32%, transparent);
+  --card-bd: color-mix(in oklab,var(--c1) 24%, transparent);
+  --divider: color-mix(in oklab,var(--c1) 55%, transparent);
+  --header-ink: color-mix(in oklab,var(--c1) 20%, #333 80%);
+}
+/* Paleta 3 */
+html[data-pal="pal3"]{
+  --c1:#292840; --c2:#3E3C73; --c3:#8449BF; --c4:#4EBFD9; --c5:#BFB0A3;
+  --chip-bg: color-mix(in oklab,var(--c1) 16%, #fff 84%);
+  --chip-bd: color-mix(in oklab,var(--c1) 30%, transparent);
+  --card-bd: color-mix(in oklab,var(--c1) 26%, transparent);
+  --divider: color-mix(in oklab,var(--c1) 50%, transparent);
+  --header-ink:#2a2a2a;
+}
+
+/* ================= MODO OSCURO ================= */
+html[data-theme="dark"]{
+  --ink:#EDEDED; --muted:#CFCFCF; --paper:#121214; --app-bg:#0B0B0C;
+  --chip-bg: color-mix(in oklab,var(--c1) 45%, #161617 55%);
+  --chip-bd: color-mix(in oklab,var(--c1) 65%, #000 35%);
+  --card-bd: color-mix(in oklab,var(--c1) 36%, #000 64%);
+  --divider: color-mix(in oklab,var(--c1) 70%, #000 30%);
+  --header-ink: color-mix(in oklab,var(--c4) 30%, #fff 70%);
+}
+
+/* ================= RESET ================= */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  /* Solo fuentes del sistema (robustas para PDF) */
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, Helvetica,
+               "Liberation Sans", "Nimbus Sans L", "Noto Sans", sans-serif;
+  font-synthesis:none;                /* evita bold/italic falsos */
+  color:var(--ink); background:var(--app-bg);
+  text-rendering:optimizeLegibility;
+}
+a{ color:inherit; text-decoration:none }
+a:hover{text-decoration:underline}
+
+/* ================= LAYOUT A4 ================= */
+.page{width:210mm;min-height:297mm;margin:0 auto;background:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.12);position:relative}
+.inner{padding:15mm 16mm 14mm 16mm}
+.side-accent{position:absolute;left:0;top:0;bottom:0;width:6mm;background:linear-gradient(180deg,var(--c1),var(--c2))}
+
+/* ================= TOP BAR ================= */
+.print-bar{width:210mm;margin:16px auto 12px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;color:var(--ink)}
+.btn{border:1px solid color-mix(in oklab,var(--c1) 60%, transparent);background:var(--c1);color:#fff;font-weight:600;padding:.65rem .9rem;border-radius:10px;cursor:pointer;line-height:1}
+.btn.secondary{background:transparent;color:var(--c2);border-color:color-mix(in oklab,var(--c2) 40%, transparent)}
+.btn:active{transform:translateY(1px)}
+.pills{margin-right:auto;display:flex;gap:6px;align-items:center}
+.pill{padding:.45rem .7rem;border-radius:999px;border:1px solid var(--chip-bd);background:var(--chip-bg);cursor:pointer;font-size:.88rem;color:var(--ink)}
+.pill.active{outline:2px solid color-mix(in oklab, var(--c1) 75%, #fff 25%)}
+
+/* ================= CABECERA ================= */
+.header{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;border-bottom:3px solid var(--divider);padding-bottom:12px}
+.name{font-size:26px;font-weight:800;letter-spacing:.2px;color:var(--c2)}
+html[data-theme="dark"] .name{color:var(--c4)}
+.role{margin-top:4px;font-size:14.5px;font-weight:700;color:var(--header-ink)}
+.avatar-wrap{display:grid;place-items:center}
+.avatar{ width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid var(--c1);box-shadow:0 4px 14px rgba(0,0,0,.18) }
+.contact{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid transparent;background:var(--chip-bg);border-radius:10px}
+.ic{width:14px;height:14px;display:inline-block}
+
+/* ================= CUERPO ================= */
+.grid{display:grid;grid-template-columns:1fr .92fr;gap:18px;margin-top:16px}
+.section{margin-bottom:12px}
+.h2{font-size:12.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--c3);font-weight:800;margin:0 0 8px 0;display:flex;align-items:center;gap:8px}
+html[data-theme="dark"] .h2{color:var(--c4)}
+.h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c1);box-shadow:0 0 0 3px color-mix(in oklab,var(--c1) 20%, transparent)}
+.h2::after{content:"";height:2px;flex:1;background:color-mix(in oklab,var(--c1) 40%, #000 0%);border-radius:2px;margin-top:1px}
+.p{margin:0;font-size:12.5px;line-height:1.38;color:var(--ink)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--chip-bd);color:var(--ink);font-weight:600}
+
+.ul{margin:0;padding-left:16px}
+.ul li{margin:4px 0;font-size:12.5px}
+
+/* Timeline */
+.timeline{position:relative}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:color-mix(in oklab,var(--c1) 28%, transparent)}
+.item{position:relative;margin:0 0 12px 0;padding-left:26px}
+.item::before{content:"";position:absolute;left:4px;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--c1)}
+html[data-theme="dark"] .item::before{background:#0f0f10}
+.item .top{display:flex;justify-content:space-between;gap:10px}
+.item .role{font-weight:800;color:var(--ink)}
+.item .org{color:color-mix(in oklab,var(--c2) 60%, #333);font-weight:600}
+html[data-theme="dark"] .item .org{color:color-mix(in oklab,var(--c4) 30%, #fff 70%)}
+.item .time{font-size:12px;color:color-mix(in oklab,#777 70%, #000 30%);white-space:nowrap}
+html[data-theme="dark"] .item .time{color:#bdbdbd}
+.item .body{margin-top:6px}
+.item .body li{margin:3px 0;color:var(--ink)}
+
+/* Educación */
+.edu .card{border:1px solid var(--card-bd);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:linear-gradient(0deg,color-mix(in oklab,var(--c1) 6%, var(--paper) 94%),var(--paper))}
+.edu .degree{font-weight:800;color:var(--ink)}
+.edu .inst{color:color-mix(in oklab,#333 80%, #000 20%)}
+html[data-theme="dark"] .edu .inst{color:#CFCFCF}
+.edu .time{font-size:12px;color:#555}
+html[data-theme="dark"] .edu .time{color:#bdbdbd}
+
+/* Footer */
+.footer{position:absolute;left:0;right:0;bottom:8mm;padding:0 16mm;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:color-mix(in oklab,#666 100%, #000 0%)}
+html[data-theme="dark"] .footer{color:#cfcfcf}
+.brand{font-weight:700;color:var(--c2)}
+html[data-theme="dark"] .brand{color:var(--c4)}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:900px){
+  .page{width:100%;min-height:auto;box-shadow:none}
+  .print-bar{width:100%;padding:0 12px}
+  .inner{padding:18px}
+  .grid{grid-template-columns:1fr;gap:18px}
+}
+
+/* ================= PRINT (PDF) ================= */
+@page{ size:A4; margin:0 }
+@media print{
+  html{background:var(--paper)!important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  body{
+    background:var(--paper)!important; color:var(--ink)!important;
+    /* fuerza fuente del sistema también en PDF */
+    font-family: system-ui, -apple-system, "Segoe UI", Arial, Helvetica,
+                 "Liberation Sans", "Nimbus Sans L", "Noto Sans", sans-serif;
+    font-synthesis:none;
+    font-feature-settings:"liga" 0, "clig" 0;  /* sin ligaduras */
+    font-variant-ligatures:none;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:geometricPrecision;
+  }
+
+  /* Links sin azul/subrayado */
+  a, a:visited{ color:inherit!important; text-decoration:none!important; -webkit-text-fill-color: currentColor!important }
+
+  .print-bar{ display:none!important }
+
+  /* ---- mini-compacto: entra siempre en 1 hoja A4 ---- */
+  .page{ width:210mm!important; min-height:297mm!important; margin:0!important; box-shadow:none!important; background:var(--paper)!important; page-break-inside:avoid; break-inside:avoid }
+  .side-accent{ width:5mm }
+  .inner{ padding:10.5mm 11mm 9.5mm 12mm }
+  .grid{ grid-template-columns:1fr .88fr; gap:10px }
+  .section{ margin-bottom:6px }
+  .header{ padding-bottom:6px }
+  .name{ font-size:21px }
+  .role{ font-size:12.5px }
+  .p, .ul li{ font-size:11.1px; line-height:1.3 }
+  .chip{ font-size:10px; padding:4px 7px }
+  .item{ margin:0 0 6px 0 }
+  .item .time{ font-size:10.8px }
+  .edu .card{ padding:7px 9px; margin-bottom:5px }
+  .footer{ bottom:6mm; font-size:9.3px }
+  .avatar{ width:100px; height:100px }
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div class="pills" role="group" aria-label="Paletas">
+    <button class="pill" data-pal="pal1">Paleta 1</button>
+    <button class="pill" data-pal="pal2">Paleta 2</button>
+    <button class="pill" data-pal="pal3">Paleta 3</button>
+  </div>
+  <button class="btn secondary" id="btn-theme" aria-label="Cambiar tema">🌗 Tema</button>
+  <button class="btn" onclick="window.print()">Descargar PDF</button>
+</div>
+
+<section class="page" role="document" aria-label="CV Ernesto Di Paola">
+  <div class="side-accent" aria-hidden="true"></div>
+  <div class="inner">
+
+    <!-- CABECERA -->
+    <header class="header">
+      <div>
+        <div class="name">Ernesto Di Paola</div>
+        <div class="role">Desarrollador Full Stack · Analista de Datos</div>
+        <div class="contact" aria-label="Contacto">
+          <a class="badge" title="Email" href="mailto:gpchuky@gmail.com">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            gpchuky@gmail.com
+          </a>
+          <a class="badge" title="WhatsApp" href="https://wa.me/543834604822" target="_blank" rel="noopener">
+            <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a10 10 0 0 0-8.66 15.02L2 22l4.98-1.34A10 10 0 1 0 12.04 2Zm5.43 13.98c-.24.68-1.4 1.34-1.93 1.4-.53.05-1.03.25-3.49-.73-2.96-1.17-4.84-4.2-4.99-4.4-.15-.2-1.19-1.57-1.19-3 0-1.43.76-2.13 1.02-2.42.27-.29.58-.36.77-.36h.56c.2.01.42.02.63.45.25.51.86 2.03.94 2.18.07.14.12.32.02.51-.1.19-.15.32-.31.49-.15.17-.33.39-.47.52-.15.15-.32.31-.13.61.2.3.82 1.28 1.76 2.08 1.21 1.08 2.23 1.41 2.55 1.57.32.15.5.13.69-.08.19-.21.79-.92 1.01-1.24.21-.32.42-.26.72-.16.29.1 1.84.88 2.16 1.04.32.16.53.24.61.36.08.13.08.77-.19 1.51Z"/></svg>
+            +54 383 460 4822
+          </a>
+          <a class="badge" title="LinkedIn" href="#" target="_blank" rel="noopener">
+            <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v15H0zM9 8h4.8v2.2h.1c.7-1.3 2.5-2.6 5.1-2.6 5.4 0 6.4 3.5 6.4 8.1V23H20v-6.7c0-1.6 0-3.7-2.3-3.7-2.3 0-2.7 1.8-2.7 3.6V23H9z"/></svg>
+            Ernesto Di Paola
+          </a>
+          <span class="badge" title="Ubicación">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+            Córdoba, Argentina
+          </span>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="images/perfil.jpeg" alt="Foto de Ernesto Di Paola"/>
+      </div>
+    </header>
+
+    <!-- CUERPO -->
+    <main class="grid">
+      <!-- IZQ -->
+      <section class="section">
+        <h2 class="h2">Sobre mí</h2>
+        <p class="p">Soy un apasionado de la tecnología y del aprendizaje continuo. Trabajo como analista de datos en el área de Reportes Técnica de Claro/APEX, donde estandarizo procesos y automatizo reportes para acelerar la toma de decisiones. Cuento con una Diplomatura en Desarrollo Full Stack y estoy por finalizar la Tecnicatura en Desarrollo de Software. Mi objetivo es aportar soluciones que generen impacto real en los usuarios y en la organización.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Habilidades técnicas</h2>
+        <div class="chips" aria-label="Habilidades técnicas">
+          <span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">React</span>
+          <span class="chip">HTML/CSS</span><span class="chip">Power BI</span><span class="chip">Grafana</span>
+          <span class="chip">GitHub</span><span class="chip">SQL</span><span class="chip">MySQL</span>
+          <span class="chip">Office</span><span class="chip">Sytex</span><span class="chip">Stealth</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Habilidades blandas</h2>
+        <ul class="ul">
+          <li>Trabajo en equipo interdisciplinario</li>
+          <li>Comunicación efectiva</li>
+          <li>Pensamiento analítico · Resolución de problemas</li>
+          <li>Gestión del tiempo y priorización</li>
+          <li>Adaptabilidad y aprendizaje continuo</li>
+          <li>Orientación a resultados</li>
+          <li>Enfoque en el cliente</li>
+          <li>Facilitación y capacitación</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Idiomas</h2>
+        <div class="chips" aria-label="Idiomas">
+          <span class="chip">Portugués avanzado</span>
+          <span class="chip">Inglés intermedio</span>
+          <span class="chip">Español nativo</span>
+        </div>
+      </section>
+
+      <!-- DER -->
+      <section class="section timeline" style="grid-column:2; grid-row:1 / span 3;">
+        <h2 class="h2">Experiencia</h2>
+
+        <div class="item">
+          <div class="top">
+            <div><div class="role">Analista de Reportes Técnica</div><div class="org">APEX America · Claro</div></div>
+            <div class="time">2024 — Presente</div>
+          </div>
+          <div class="body">
+            <ul class="ul">
+              <li>Monitoreo y análisis de fallas de red (móvil, fija e IPTV).</li>
+              <li>Intervención en incidentes y escalamiento de fallas masivas.</li>
+              <li>Automatización de tableros Power BI y alertas en Grafana.</li>
+              <li>Informes de rendimiento diarios, semanales y mensuales.</li>
+              <li>Diseño de instructivos y capacitaciones.</li>
+              <li>Soporte a clientes referidos con datos para escalamiento.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="top">
+            <div><div class="role">Asesor Técnico Convergente (Claro)</div><div class="org">APEX America</div></div>
+            <div class="time">2024 — 2024</div>
+          </div>
+          <div class="body"><ul class="ul"><li>Atención técnica, ventas y análisis de métricas de performance.</li></ul></div>
+        </div>
+
+        <div class="item">
+          <div class="top">
+            <div><div class="role">Encargado</div><div class="org">World Insumo</div></div>
+            <div class="time">2019 — 2021</div>
+          </div>
+          <div class="body">
+            <ul class="ul">
+              <li>Gestión de stock y compras, atención al público y community management.</li>
+              <li>Coordinación de equipo y caja.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="top">
+            <div><div class="role">Administrativo</div><div class="org">Idear Time Group S.R.L</div></div>
+            <div class="time">2018 — 2019</div>
+          </div>
+          <div class="body"><ul class="ul"><li>Relaciones públicas, control de personal y facturación.</li></ul></div>
+        </div>
+
+        <div class="item">
+          <div class="top">
+            <div><div class="role">Administrativo</div><div class="org">Mall Rivadavia</div></div>
+            <div class="time">2017 — 2018</div>
+          </div>
+          <div class="body"><ul class="ul"><li>Cobro de alquileres, depósitos y facturación.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="section edu" style="grid-column:2;">
+        <h2 class="h2">Formación académica</h2>
+        <div class="card"><div class="degree">Tecnicatura en Desarrollo de Software</div><div class="inst">Instituto Superior Blas Pascal</div><div class="time">2021 — cursando último semestre</div></div>
+        <div class="card"><div class="degree">Diplomatura · Desarrollador Full Stack</div><div class="inst">Ícaro – FCEFyN</div><div class="time">2022 — 2023</div></div>
+        <div class="card"><div class="degree">Secundario · Bachiller en Cs. Sociales</div><div class="inst">E.N.C.J.A</div><div class="time">2009 — 2014</div></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© Ernesto Di Paola</span>
+      <span class="brand"></span>
+    </footer>
+  </div>
+</section>
+
+<script>
+/* ===== Cargar preferencias (tema + paleta) ===== */
+(function(){
+  try{
+    const savedTheme = localStorage.getItem('cv_theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme ?? (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', initialTheme);
+
+    const savedPal = localStorage.getItem('cv_pal') || 'pal1';
+    document.documentElement.setAttribute('data-pal', savedPal);
+    document.querySelectorAll('.pill').forEach(p=>p.classList.toggle('active', p.dataset.pal===savedPal));
+  }catch(e){}
+})();
+
+/* Toggle tema */
+document.getElementById('btn-theme')?.addEventListener('click', () => {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  try{ localStorage.setItem('cv_theme', next); }catch(e){}
+});
+
+/* Selector de paleta */
+document.querySelectorAll('.pill').forEach(p=>{
+  p.addEventListener('click', ()=>{
+    const pal = p.dataset.pal;
+    document.documentElement.setAttribute('data-pal', pal);
+    document.querySelectorAll('.pill').forEach(x=>x.classList.toggle('active', x===p));
+    try{ localStorage.setItem('cv_pal', pal); }catch(e){}
+  });
+});
+</script>
+
+</body>
+</html>
